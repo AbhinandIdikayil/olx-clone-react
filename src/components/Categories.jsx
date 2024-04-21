@@ -1,11 +1,12 @@
 import React from 'react'
 import {IoIosArrowDown, IoMdSad} from 'react-icons/io' 
+
 function Categories() {
   return (
     <div className='w-full bg-white p-2 flex items-center gap-4 pl-5 shadow-lg'>
         <div className='text-black font-semibold flex items-center pl-8'>
             <span>
-
+             
             ALL CATEGORIES
             </span>
             <IoIosArrowDown />
