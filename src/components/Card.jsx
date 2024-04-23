@@ -1,12 +1,21 @@
-import React from 'react'
+import React,{ useContext } from 'react'
+import {PostContext} from '../context/PostContext'
 import r15Logo from '/R15V3.jpg'
 import { SlHeart } from 'react-icons/sl'
+import {useNavigate} from 'react-router-dom'
 
 function Card({ data }) {
+    const {setPostDetails} = useContext(PostContext);
+    const navigate = useNavigate();
+
+    const handleProduct = () => {
+        setPostDetails(data)
+        navigate('/productDetails')
+    }
 
     const { productName, category, location, price, url, createdAt } = data
     return (
-        <div style={{ border: '0.5px solid black' , zIndex:999}} className="relative rounded h-[200px] w-fit sm:h-64 sm:w-72 p-2">
+        <div onClick={handleProduct} style={{ border: '0.5px solid black' , zIndex:999}} className="relative rounded h-[200px] w-fit sm:h-64 sm:w-72 p-2">
             <div className='w-full h-2/3 sm:h-3/4'>
                 <img className='w-full h-full object-cover' src={url} alt="" />
             </div>
