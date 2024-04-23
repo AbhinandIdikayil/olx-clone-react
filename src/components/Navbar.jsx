@@ -1,15 +1,34 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { IoIosSearch, IoIosArrowDown } from "react-icons/io";
-import SellButton from '../../assets/SellButton';
+import { UserContext } from '../App';
+import { Link,useNavigate } from 'react-router-dom';
+
+import {signOut} from 'firebase/auth'
+import { auth } from '../firebase/config';
 
 function Navbar() {
+    const navigate = useNavigate()
+    const { user } = useContext(UserContext)
+
+
+    function handleSignout () {
+        signOut(auth)
+            .then(() => {
+                // user has signed out successfully
+                navigate('/')
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     return (
         <div style={{ height: '72px' }} className='fixed z-[99] w-full px-5 bg-gray-200 border-b-4 border-white flex items-center justify-between sm:justify-start gap-4 shadow-sm'>
             <div>
                 <svg width="48px" height="48px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd"><path class="rui-w4DG7" d="M661.333 256v512h-128v-512h128zM277.333 298.667c117.824 0 213.333 95.531 213.333 213.333s-95.509 213.333-213.333 213.333c-117.824 0-213.333-95.531-213.333-213.333s95.509-213.333 213.333-213.333zM794.496 384l37.504 37.504 37.504-37.504h90.496v90.496l-37.504 37.504 37.504 37.504v90.496h-90.496l-37.504-37.504-37.504 37.504h-90.496v-90.496l37.504-37.504-37.504-37.504v-90.496h90.496zM277.333 426.667c-47.061 0-85.333 38.293-85.333 85.333s38.272 85.333 85.333 85.333c47.061 0 85.333-38.293 85.333-85.333s-38.272-85.333-85.333-85.333z"></path></svg>
             </div>
             <div className='hidden sm:block h-2/3 w-1/5 overflow-hidden rounded'>
-                <input type="text" className='bg-white h-full w-full rounded text-black font-semibold p-2 border-2 focus:border-red-600  border-black  '/>
+                <input type="text" className='bg-white h-full w-full rounded text-black font-semibold p-2 border-2 focus:border-red-600  border-black  ' />
             </div>
             <div className='hidden sm:block w-1/2 h-2/3 overflow-hidden bg-yellow-300'>
                 <form className='w-full h-full flex rounded overflow-hidden'>
@@ -46,12 +65,34 @@ function Navbar() {
             </div>
 
             <div className='flex gap-2 items-center w-fit'>
-                <span className='text-xl text-black font-semibold underline'>
-                    Login
-                </span>
-                <button className='h-1/2 px-3 rounded-3xl text-black font-bold border-4 border-r-green-400 border-l-green-400 border-t-blue-600 border-b-yellow-400 bg-zinc-50'>
-                    + sell
-                </button>
+                {
+                    user === null ? (
+                        <>
+                            <Link to='login' className='text-xl text-black font-semibold underline'>
+                                Login
+                            </Link>
+
+                            <Link to='login' className='h-1/2 px-3 rounded-3xl text-black font-bold border-4 border-r-green-400 border-l-green-400 border-t-blue-600 border-b-yellow-400 bg-zinc-50'>
+                                + sell
+                            </Link>
+                        </>
+
+                    ) : (
+                        <>
+                            <span onClick={handleSignout} className='text-xl text-black font-semibold underline'>
+                                Logout
+                            </span>
+
+                            <Link to='sell' className='h-1/2 px-3 rounded-3xl text-black font-bold border-4 border-r-green-400 border-l-green-400 border-t-blue-600 border-b-yellow-400 bg-zinc-50'>
+                                + sell
+                            </Link>
+                        </>
+                    )
+                }
+
+
+
+
             </div>
 
         </div>

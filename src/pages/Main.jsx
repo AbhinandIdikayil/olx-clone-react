@@ -10,7 +10,7 @@ function Main() {
             {/* product listing */}
             
             <div class="container px-3 sm:mx-auto flex-col items-center justify-center mt-4 pb-2">
-            <h1 className='text-zinc-950 text-3xl font-semibold py-2'>Fresh recommendations</h1>
+            <h1 className='text-zinc-950 text-sm sm:text-3xl font-semibold py-2'>Fresh recommendations</h1>
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-6 gap-3">
                     <div style={{ border: '0.5px solid black', opacity: '0.5' }} className="relative rounded h-[200px] w-fit sm:h-64 sm:w-72 p-2">
                         <div className='w-full h-2/3 sm:h-3/4'>

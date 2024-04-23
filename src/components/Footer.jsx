@@ -7,14 +7,14 @@ function Footer() {
         <>
             <div className='wrapper bg-gray-100 h-[250px] flex justify-center items-center' >
                 <div className="container mx-auto h-36  flex gap-5">
-                    <div className="footerbox w-full h-full  text-[#002f34]">
+                    <div className="hidden sm:block  footerbox w-full h-full  text-[#002f34]">
                         <div className='text-sm font-semibold leading-7 mt-3'>POPULAR LOCATIONS</div>
                         <div className='text-xs leading-6'>Kolkata</div>
                         <div className='text-xs leading-6'>Mumbai</div>
                         <div className='text-xs leading-6'>Chennai</div>
                         <div className='text-xs leading-6'>Pune</div>
                     </div>
-                    <div className="footerbox w-full h-full  text-[#002f34]">
+                    <div className="hidden sm:block footerbox w-full h-full  text-[#002f34]">
                         <div className='text-sm font-semibold leading-7 mt-3'>TRENDING LOCATIONS</div>
                         <div className='text-xs leading-6'>Bhubaneshwar</div>
                         <div className='text-xs leading-6'>Hyderabad</div>
