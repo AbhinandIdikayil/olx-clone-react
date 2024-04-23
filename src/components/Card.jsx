@@ -17,7 +17,7 @@ function Card({ data }) {
     return (
         <div onClick={handleProduct} style={{ border: '0.5px solid black' , zIndex:999}} className="relative rounded h-[200px] w-fit sm:h-64 sm:w-72 p-2">
             <div className='w-full h-2/3 sm:h-3/4'>
-                <img className='w-full h-full object-cover' src={url} alt="" />
+                <img loading='lazy' className='w-full h-full object-cover' src={url} alt="" />
             </div>
             <h3 className='text-black text-lg font-bold'> ₹ {price} </h3>
             <h3 className='text-black text-sm font-bold'> {productName + ' - ' + category} </h3>

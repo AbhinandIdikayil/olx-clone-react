@@ -14,7 +14,7 @@ function ProductDetails() {
             setUserDetails(doc.data())
         })
     }
-console.log(userDetails)
+    console.log(userDetails)
     useEffect(() => {
         getUser();
     }, [])
