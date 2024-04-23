@@ -8,7 +8,8 @@ import { auth } from '../firebase/config';
 
 function Navbar() {
     const navigate = useNavigate()
-    const { user } = useContext(UserContext)
+    const { user,setUser } = useContext(UserContext)
+    console.log(user)
 
 
     function handleSignout () {
@@ -16,6 +17,7 @@ function Navbar() {
             .then(() => {
                 // user has signed out successfully
                 navigate('/')
+                setUser(null)
             })
             .catch((error) => {
                 console.log(error)

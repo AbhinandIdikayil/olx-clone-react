@@ -12,7 +12,7 @@ export const UserContext = createContext(null);
 
 function App() {
 
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState(null)
 
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
         setUser(currentUser)
       }
     })
-  }), []
+  },[])
 
 
   return (
