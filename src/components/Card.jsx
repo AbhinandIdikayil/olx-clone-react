@@ -15,7 +15,7 @@ function Card({ data }) {
 
     const { productName, category, location, price, url, createdAt } = data
     return (
-        <div onClick={handleProduct} style={{ border: '0.5px solid black' , zIndex:999}} className="relative rounded h-[200px] w-fit sm:h-64 sm:w-72 p-2">
+        <div onClick={handleProduct} style={{ border: '1px solid gray' , zIndex:999}} className="relative rounded h-[200px] w-fit sm:h-64 sm:w-72 p-2">
             <div className='w-full h-2/3 sm:h-3/4'>
                 <img loading='lazy' className='w-full h-full object-cover' src={url} alt="" />
             </div>

@@ -9,6 +9,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import Sell from './pages/Sell'
 import { PostContext } from './context/PostContext'
 import ProductDetails from './pages/ProductDetails'
+import ProtectedRoute from './components/ProtectedRoute'
 
 export const UserContext = createContext(null);
 
@@ -30,15 +31,19 @@ function App() {
 
   return (
     <UserContext.Provider value={{ user, setUser }} >
-      <PostContext.Provider value={{postDetails, setPostDetails}} >
+      <PostContext.Provider value={{ postDetails, setPostDetails }} >
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Layout />}>
               <Route path='' element={<Main />} />
               <Route path='login' element={<Login />} />
               <Route path='signup' element={<Signup />} />
-              <Route path='sell' element={<Sell />} />
               <Route path='productDetails' element={<ProductDetails />} />
+              <Route path='sell' element={
+                <ProtectedRoute>
+                  <Sell />
+                </ProtectedRoute>
+              } />
             </Route>
           </Routes>
         </BrowserRouter>
